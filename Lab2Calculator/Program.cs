@@ -198,5 +198,3 @@ class Calculator
         }
     }
     //(6)
-}// oinevoneoveorev
-

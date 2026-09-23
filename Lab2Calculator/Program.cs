@@ -7,11 +7,11 @@ class Calculator
         bool test = true;
         do
         {
-            char op = GetOp();
+            char op = GetOp();// get operator from user
             if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%' || op == '^' ||
                 op == 's' || op == 'S' || op == 'a' || op == 'A' || op == 'f' || op == 'F' || op == 'c' || op == 'C' || op == 'r' || op == 'R')
             {
-                double a = GetNum();
+                double a = GetNum(); // get first number from user
                 double b;
                 if (op == 's' || op == 'S' || op == 'a' || op == 'A' || op == 'f' || op == 'F' || op == 'c' || op == 'C' || op == 'r' || op == 'R')
                 {
@@ -19,13 +19,13 @@ class Calculator
                 }
                 else
                 {
-                    b = GetNum2();
+                    b = GetNum2();//Get second number from user
                 }
-                double result = Calculate(a, b, op);
-                Output(a, b, op, result);
+                double result = Calculate(a, b, op); //Calculate the result based on the operator and numbers
+                Output(a, b, op, result); //Output the result to the user
                 do
                 {
-                    char rep = Again();
+                    char rep = Again(); //Ask user if they want to use the calculator again
                     if (rep == 'y' || rep == 'Y')
                     {
                         break;
@@ -42,17 +42,17 @@ class Calculator
                 } while (test);
 
             }
-            else
+            else //If the operator is invalid, ask the user to try again
             {
                 Console.WriteLine("\nInvalid input. Try again.\n");
                 continue;
             }
-        } while (test);
+        } while (test); //Keep running the calculator until the user decides to exit
 
     }
 
-    //GetOp(1)
-    static char GetOp()
+    //GetOp
+    static char GetOp() //Get operator from user
     {
         while (true)
         {
@@ -68,10 +68,10 @@ class Calculator
 
         }
     }
-    //(1)
+   
 
-    //GetNum(2)
-    static double GetNum()
+    //GetNum
+    static double GetNum() //Get first number from user
     {
         while (true)
         {
@@ -87,10 +87,10 @@ class Calculator
             }
         }
     }
-    //(2)
+    
 
-    //GetNum2(3)
-    static double GetNum2()
+    //GetNum2
+    static double GetNum2() //Get second number from user
     {
         while (true)
         {
@@ -106,44 +106,44 @@ class Calculator
             }
         }
     }
-    //(3)
 
-    //Calculate(4)
-    static double Calculate(double num1, double num2, char op)
+
+    //Calculate
+    static double Calculate(double num1, double num2, char op) //Calculate the result based on the operator and numbers
     {
-        Random rand = new Random();
-        if (op == '+')
+        Random rand = new Random(); // Random number generator for 'r' operation
+        if (op == '+')              // Addition
             return num1 + num2;
-        else if (op == '-')
+        else if (op == '-')         // Subtraction
             return num1 - num2;
-        else if (op == '*')
+        else if (op == '*')         // Multiplication
             return num1 * num2;
-        else if (op == '/')
+        else if (op == '/')         // Division
         {
-            if (num2 != 0)
+            if (num2 != 0)              // Check for division by zero
                 return num1 / num2;
             else
                 Console.WriteLine("Cannot divide by zero.");
         }
-        else if (op == '%')
+        else if (op == '%')         // Modulus
         {
-            if (num2 != 0)
+            if (num2 != 0)              // Check for modulus by zero
                 return num1 % num2;
             else
                 Console.WriteLine("Cannot perform modulus with zero.");
         }
-        else if (op == '^')
+        else if (op == '^')         // Exponentiation
             return Math.Pow(num1, num2);
-        else if (op == 's' || op == 'S')
-            if (num1 >= 0)
-                return Math.Sqrt(num1); // Square Root Function
+        else if (op == 's' || op == 'S')    // Square Root
+            if (num1 >= 0)      
+                return Math.Sqrt(num1); 
             else
-            {
+            {                           
                 Console.WriteLine("Error: Cannot take the square root of a negative number.");
                 return double.NaN;
             }
-        else if (op == 'a' || op == 'A')
-            return Math.Abs(num1);  // Absolute Value
+        else if (op == 'a' || op == 'A')    // Absolute Value
+            return Math.Abs(num1);  
         else if (op == 'f' || op == 'F')
             return Math.Floor(num1);  // Floor
         else if (op == 'c' || op == 'C')
@@ -156,11 +156,11 @@ class Calculator
             return double.NaN;
         }
 
-        return double.NaN;
+        return double.NaN;      // Default return value in case of an error
     }
-    //(4)
+    
 
-    //OutPut(5)
+    //OutPut
     static void Output(double num1, double num2, char op, double result)
     {
         if (op == 's' || op == 'S')
@@ -176,9 +176,9 @@ class Calculator
         else
             Console.WriteLine($"Result: {num1} {op} {num2} = {result}");
     }
-    //(5)
 
-    //Again(6)
+
+    //Again 
     static char Again()
     {
         while (true)
@@ -197,7 +197,6 @@ class Calculator
 
         }
     }
-    //(6)
 }
 
 
